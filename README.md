@@ -1,4 +1,4 @@
-# Quijaua - Agenda
+# Quijaua - Editais
 
 A simple and efficient WordPress plugin that implements the  management
 
@@ -37,4 +37,3 @@ git clone git@github.com:Quijaua/Agenda.git quijaua-agenda
 ```
 [editais]
 ```
-
