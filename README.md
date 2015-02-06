@@ -1,18 +1,18 @@
 # Quijaua - Agenda
 
-A simple and efficient WordPress plugin that implements the event management
+A simple and efficient WordPress plugin that implements the  management
 
 ##Features
 
-1. Shortcode for calendar view with registered events and event registration form.
+1. Shortcode for calendar view with registered editals and edital registration form.
 
-2. Only moderate events in the admin will be displayed publicly.
+2. Only moderate editals in the admin will be displayed publicly.
 
-3. Categorization of events
+3. Categorization of editals
 
-4. Event details view
+4. edital details view
 
-5. Navigation of events Calendar
+5. Navigation of editals Calendar
 
 ## How to use
 
@@ -23,7 +23,7 @@ A simple and efficient WordPress plugin that implements the event management
 3. Clone this repository on wp-content/plugins folder.
 
 ```
-git clone git@github.com:Quijaua/Agenda.git quijaua-agenda 
+git clone git@github.com:Quijaua/Agenda.git quijaua-agenda
 ```
 
 4. Active plugin.
@@ -33,8 +33,8 @@ git clone git@github.com:Quijaua/Agenda.git quijaua-agenda
 # Shortcode
 
 1. Create page
-2. On content field use 
+2. On content field use
 ```
-[agenda]
+[editais]
 ```
 
