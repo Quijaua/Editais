@@ -1,6 +1,10 @@
 
 (function($){
     $('.tooltip').tooltipster({contentAsHTML: true});
+    $('#more-editals').on('click', function(e) {
+        e.preventDefault();
+        $('#more-editals-list').modal();
+    });
     $('#frm-edital').validate({
 
         submitHandler: function(form) {

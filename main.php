@@ -108,8 +108,6 @@ function quijauaeditais_shortcode() {
     foreach($editais_posts as $edital_post)
     {
         setup_postdata($edital_post);
-
-
         $tooltipMarkup = '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
         $tooltipMarkup .= '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
         $tooltipMarkup .= '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($edital_post->ID, 'edt_link', true);
@@ -120,9 +118,26 @@ function quijauaeditais_shortcode() {
 
     ?>
     </ul>
-    <a href="">Ver mais</a>
+    <a href="#" id="more-editals">Ver mais</a>
 
-    <div id="more-editals"></div>
+    <div id="more-editals-list" style="display: none;">
+        <?php
+            $args = array( 'offset' => 5, 'post_type'=> 'quijauaeditais_edt', 'post_status' => 'publish');
+            $more_posts = get_posts($args);
+        foreach($more_posts as $more_post)
+        {
+            setup_postdata($more_post);
+            $markup = '<div class="more-edital-item"><p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($more_post->ID, 'edt_organization', true);
+            $markup .= '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($more_post->ID, 'edt_period', true);
+            $markup .= '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($more_post->ID, 'edt_link', true);
+            $markup .= '</p></div>';
+            echo $markup;
+        }
+        wp_reset_postdata();
+
+
+        ?>
+    </div>
     <form method="post" id="frm-edital">
         <input type="text" name="title" id="title" data-rule-required="true" data-msg-required="Campo NOME DO EDITAL é obrigatório" placeholder="NOME DO EDITAL" />
         <br />
