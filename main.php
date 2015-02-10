@@ -110,8 +110,9 @@ function quijauaeditais_shortcode() {
         setup_postdata($edital_post);
         echo '<li data-target-id="edital-'.$edital_post->ID.'">'.$edital_post->post_title.'</li>';
     }
-
+    wp_reset_postdata();
     foreach($editais_posts as $edital_post) {
+        setup_postdata($edital_post);
         echo '<div id="edital-'.$edital_post->ID.'" style="display:none;">';
         echo '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
         echo '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
