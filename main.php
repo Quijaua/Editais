@@ -108,21 +108,21 @@ function quijauaeditais_shortcode() {
     foreach($editais_posts as $edital_post)
     {
         setup_postdata($edital_post);
-        echo '<li data-target-id="edital-'.$edital_post->ID.'">'.$edital_post->post_title.'</li>';
-    }
-    wp_reset_postdata();
-    foreach($editais_posts as $edital_post) {
-        setup_postdata($edital_post);
-        echo '<div id="edital-'.$edital_post->ID.'" style="display:none;">';
-        echo '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
-        echo '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
-        echo '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($edital_post->ID, 'edt_link', true);
-        echo '</p></div>';
+
+
+        $tooltipMarkup = '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
+        $tooltipMarkup .= '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
+        $tooltipMarkup .= '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($edital_post->ID, 'edt_link', true);
+        $tooltipMarkup .= '</p>';
+        echo '<li class="tooltip" title="'.htmlentities($tooltipMarkup).'"><a href="'.get_post_meta($edital_post->ID, 'edt_link', true).'">'.$edital_post->post_title.'</a></li>';
     }
     wp_reset_postdata();
 
     ?>
     </ul>
+    <a href="">Ver mais</a>
+
+    <div id="more-editals"></div>
     <form method="post" id="frm-edital">
         <input type="text" name="title" id="title" data-rule-required="true" data-msg-required="Campo NOME DO EDITAL é obrigatório" placeholder="NOME DO EDITAL" />
         <br />
@@ -153,6 +153,8 @@ function quijauaeditais_scripts() {
         wp_enqueue_style('quijauaedital-sweetalert-css', QUIJAUAEDITAIS_CSS_URL . 'sweet-alert.css');
         wp_enqueue_script('quijauaedital-plugins', QUIJAUAEDITAIS_JS_URL . 'plugins.js', array('jquery'), '1.0.0', true);
         wp_enqueue_script('quijauaedital-sweetalert', QUIJAUAEDITAIS_JS_URL . 'sweetalert/lib/sweet-alert.min.js', array(), '1.0.0', true);
+        wp_enqueue_script('quijauaedital-tooltipster', QUIJAUAEDITAIS_JS_URL . 'tooltipster/js/jquery.tooltipster.min.js', array(), '1.0.0', true);
+
         wp_enqueue_script('quijauaedital-main', QUIJAUAEDITAIS_JS_URL . 'main.js', array('jquery'), '1.0.0', true);
 
 

@@ -1,6 +1,6 @@
 
 (function($){
-
+    $('.tooltip').tooltipster({contentAsHTML: true});
     $('#frm-edital').validate({
 
         submitHandler: function(form) {
@@ -29,6 +29,7 @@
                     return;
                 });
         }
+
 
     });
 })(jQuery);
