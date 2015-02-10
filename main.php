@@ -100,20 +100,23 @@ function quijauaeditais_shortcode() {
     <h1>EDITAIS E OPORTUNIDADES</h1>
     <ul>
     <?php
-    $events = array();
-    $args = array( 'posts_per_page' => -1, 'post_type'=> 'quijauaeditais_edt', 'post_status' => 'draft');
+
+    $args = array( 'posts_per_page' => 5, 'post_type'=> 'quijauaeditais_edt', 'post_status' => 'publish');
 
     $editais_posts = get_posts($args);
 
     foreach($editais_posts as $edital_post)
     {
         setup_postdata($edital_post);
-        echo '<li> Nome do Edital: '.$edital_post->post_title;
-        echo '<br />ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: '.get_post_meta( $edital_post->ID, 'edt_organization', true);
-        echo '<br />PERIODO INSCRIÇÃO: '.get_post_meta( $edital_post->ID, 'edt_period', true);
-        echo '<br />LINK PARA INFORMAÇÕES: '.get_post_meta( $edital_post->ID, 'edt_link', true);
-        echo '</li>';
+        echo '<li data-target-id="edital-'.$edital_post->ID.'">'.$edital_post->post_title.'</li>';
+    }
 
+    foreach($editais_posts as $edital_post) {
+        echo '<div id="edital-'.$edital_post->ID.'" style="display:none;">';
+        echo '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
+        echo '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
+        echo '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($edital_post->ID, 'edt_link', true);
+        echo '</p></div>';
     }
     wp_reset_postdata();
 
@@ -143,19 +146,21 @@ function quijauaeditais_change_default_title() {
 }
 
 function quijauaeditais_scripts() {
+    global $post;
+    if ( has_shortcode( $post->post_content, 'editais' ) ) {
+        wp_enqueue_style('quijauaedital-main', QUIJAUAEDITAIS_CSS_URL . 'main.css');
+        wp_enqueue_style('quijauaedital-sweetalert-css', QUIJAUAEDITAIS_CSS_URL . 'sweet-alert.css');
+        wp_enqueue_script('quijauaedital-plugins', QUIJAUAEDITAIS_JS_URL . 'plugins.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('quijauaedital-sweetalert', QUIJAUAEDITAIS_JS_URL . 'sweetalert/lib/sweet-alert.min.js', array(), '1.0.0', true);
+        wp_enqueue_script('quijauaedital-main', QUIJAUAEDITAIS_JS_URL . 'main.js', array('jquery'), '1.0.0', true);
 
-    wp_enqueue_style( 'quijauaedital-main', QUIJAUAEDITAIS_CSS_URL . 'main.css' );
-    wp_enqueue_style( 'quijauaedital-sweetalert-css', QUIJAUAEDITAIS_CSS_URL . 'sweet-alert.css' );
-    wp_enqueue_script( 'quijauaedital-plugins', QUIJAUAEDITAIS_JS_URL . 'plugins.js', array('jquery'), '1.0.0', true );
-    wp_enqueue_script( 'quijauaedital-sweetalert', QUIJAUAEDITAIS_JS_URL . 'sweetalert/lib/sweet-alert.min.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'quijauaedital-main', QUIJAUAEDITAIS_JS_URL . 'main.js', array('jquery'), '1.0.0', true );
 
-
-    wp_localize_script( 'quijauaedital-main', 'quijauaeditais_ajax',
-        array(
-            'ajax_url' => admin_url( 'admin-ajax.php' )
-        )
-    );
+        wp_localize_script('quijauaedital-main', 'quijauaeditais_ajax',
+            array(
+                'ajax_url' => admin_url('admin-ajax.php')
+            )
+        );
+    }
 }
 
 function quijauaeditais_save_edital_callback() {
@@ -201,6 +206,7 @@ add_action( 'init', 'quijauaeditais_init' );
 add_shortcode( 'editais', 'quijauaeditais_shortcode' );
 add_action( 'wp_enqueue_scripts', 'quijauaeditais_scripts' );
 add_action( 'wp_ajax_quijauaeditais_save_edital', 'quijauaeditais_save_edital_callback' );
+add_action( 'wp_ajax_nopriv_quijauaeditais_save_edital', 'quijauaeditais_save_edital_callback' );
 
 // Filters
 add_filter( 'rwmb_meta_boxes', 'quijauaeditais_metaboxes' );
