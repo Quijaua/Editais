@@ -124,7 +124,7 @@ function quijauaeditais_shortcode() {
         <br />
         <input type="text" name="edt_organization" id="edt_organization" data-rule-required="true" data-msg-required="Campo ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO é obrigatório" placeholder="ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO" />
         <input type="text" name="edt_period" id="edt_period" data-rule-required="true" data-msg-required="Campo PERIODO DA INSCRIÇÃO é obrigatório" placeholder="PERIODO DA INSCRIÇÃO" />
-        <input type="text" name="edt_link" id="edt_link" data-rule-required="true" data-msg-required="Campo LINK PARA INFORMAÇÕES é obrigatório" placeholder="LINK PARA INFORMAÇÕES" />
+        <input type="text" name="edt_link" id="edt_link" data-rule-required="true" data-msg-required="Campo LINK PARA INFORMAÇÕES é obrigatório" data-rule-url="true" data-msg-url="Digite uma URL válida" placeholder="LINK PARA INFORMAÇÕES" />
         <br />
         <input type="submit" value="ENVIAR" id="btn-send-frm-edital" />
     </form>
