@@ -23,7 +23,7 @@ A simple and efficient WordPress plugin that implements the  management
 3. Clone this repository on wp-content/plugins folder.
 
 ```
-git clone git@github.com:Quijaua/Agenda.git quijaua-agenda
+git clone github.com/Quijaua/Agenda.git quijaua-agenda
 ```
 
 4. Active plugin.
