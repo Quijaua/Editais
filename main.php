@@ -37,7 +37,7 @@ function quijauaeditais_cpts() {
         'description'   =>   __( 'Editais', '' ),
         'public'        =>   true,
         'show_in_menu'  =>   true,
-        //'menu_icon'     =>   IMAGES . 'event.svg',
+        'menu_icon'     =>   'dashicons-media-text',
         'has_archive'   =>   true,
         'rewrite'       =>   'editais',
         'supports'      =>   $supports
