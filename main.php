@@ -120,7 +120,7 @@ function quijauaeditais_shortcode() {
 
     ?>
     </ul>
-    <a href="#" id="more-editals">Ver mais</a>
+    <a href="?page_id=<page_id>" id="more-editals">Ver mais</a>
 
     <div id="more-editals-list" style="display: none;">
         <?php
@@ -187,7 +187,7 @@ function quijauaeditais_save_edital_callback() {
 
     // Create post object
     $edital_post = array(
-        'post_title'    => sanitize_text_field($_POST['title']),
+        'post_title'    => $_POST['title'],
         'post_status'   => 'draft',
         'post_type'     => 'quijauaeditais_edt',
     );

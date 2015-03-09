@@ -37,3 +37,9 @@ git clone github.com/Quijaua/Agenda.git quijaua-agenda
 ```
 [editais]
 ```
+
+# Page Templates
+
+1. Copy file page-templates/page_editais.php to activated theme folder;
+2. Create page and select Editais Template
+3. Change L: 123 of file main.php with link of page
