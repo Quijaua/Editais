@@ -1,6 +1,6 @@
 
 (function($){
-    $('.tooltip').tooltipster({contentAsHTML: true,theme: 'tooltipster-noir'});
+    $('.tooltip').tooltipster({contentAsHTML: true,theme: 'tooltipster-noir', interactive: true});
     $('#more-editals').on('click', function(e) {
         e.preventDefault();
         $('#more-editals-list').modal();

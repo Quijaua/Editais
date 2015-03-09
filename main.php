@@ -107,10 +107,12 @@ function quijauaeditais_shortcode() {
 
     foreach($editais_posts as $edital_post)
     {
+
         setup_postdata($edital_post);
+        $externalLink = get_post_meta($more_post->ID, 'edt_link', true);
         $tooltipMarkup = '<p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($edital_post->ID, 'edt_organization', true);
         $tooltipMarkup .= '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($edital_post->ID, 'edt_period', true);
-        $tooltipMarkup .= '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($edital_post->ID, 'edt_link', true);
+        $tooltipMarkup .= '<br />LINK PARA INFORMAÇÕES: <a href="' . $externalLink. '">'.$externalLink.'<a/>';
         $tooltipMarkup .= '</p>';
         echo '<li class="tooltip" title="'.htmlentities($tooltipMarkup).'"><a href="'.get_post_meta($edital_post->ID, 'edt_link', true).'">'.$edital_post->post_title.'</a></li>';
     }
@@ -129,7 +131,7 @@ function quijauaeditais_shortcode() {
             setup_postdata($more_post);
             $markup = '<div class="more-edital-item"><p>ÓRGÃO/INSTITUIÇÃO/ORGANIZAÇÃO: ' . get_post_meta($more_post->ID, 'edt_organization', true);
             $markup .= '<br />PERIODO INSCRIÇÃO: ' . get_post_meta($more_post->ID, 'edt_period', true);
-            $markup .= '<br />LINK PARA INFORMAÇÕES: ' . get_post_meta($more_post->ID, 'edt_link', true);
+            $markup .= '<br />LINK PARA INFORMAÇÕES: <a href="' . get_post_meta($more_post->ID, 'edt_link', true). '">'.get_post_meta($more_post->ID, 'edt_link', true).'<a/>';
             $markup .= '</p></div>';
             echo $markup;
         }
