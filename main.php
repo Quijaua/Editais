@@ -120,7 +120,7 @@ function quijauaeditais_shortcode() {
 
     ?>
     </ul>
-    <a href="?page_id=<page_id>" id="more-editals">Ver mais</a>
+    <a href="?page_id=<page_id>">Ver mais</a>
 
     <div id="more-editals-list" style="display: none;">
         <?php
