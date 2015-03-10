@@ -15,7 +15,9 @@
                         'post_status' => 'publish',
                         'paged' => $paged,
                         'posts_per_page' => 25,
-                        'orderby' => 'edt_period',
+                        'meta_key' => 'edt_period',
+                        'meta_type' => 'DATE',
+                        'orderby' => 'meta_value',
                         'order'   => 'DESC'
           ));
          
