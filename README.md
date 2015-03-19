@@ -42,4 +42,4 @@ git clone github.com/Quijaua/Agenda.git quijaua-agenda
 
 1. Copy file page-templates/page_editais.php to activated theme folder;
 2. Create page and select Editais Template
-3. Change L: 123 of file main.php with link of page
+3. Change L: 143 of file main.php with link of page
