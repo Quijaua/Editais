@@ -207,7 +207,7 @@ function quijauaeditais_save_edital_callback() {
 
     // Create post object
     $edital_post = array(
-        'post_title'    => $_POST['title'],
+        'post_title'    => sanitize_text_field($_POST['title']),
         'post_status'   => 'draft',
         'post_type'     => 'quijauaeditais_edt',
     );
