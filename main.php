@@ -219,7 +219,10 @@ function quijauaeditais_save_edital_callback() {
         $period = $_POST['edt_period'];
         $edt_period_start = implode("-",array_reverse(explode("/",substr($period, 0, strpos($period,'-') -1))));
         $edt_period_finish = implode("-",array_reverse(explode("/",substr($period, strpos($period,'-') + 1 ))));
-
+        
+        $edt_period_start = str_replace(' ', '', $edt_period_start);
+        $edt_period_finish = str_replace(' ', '', $edt_period_finish);
+        
         add_post_meta( $edital_post_id, 'edt_organization', sanitize_text_field($_POST['edt_organization']) );
         add_post_meta( $edital_post_id, 'edt_period', $period );
         add_post_meta( $edital_post_id, 'edt_period_start', $edt_period_start );
